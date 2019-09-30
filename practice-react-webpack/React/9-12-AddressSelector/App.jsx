@@ -1,6 +1,6 @@
-import AddressPicker from './AddressPicker.jsx.js'
-import ReceiptType from './ReceiptType.jsx.js'
-import TaiwanPostalCode from './TaiwanPostalCode.json.js'
+import AddressPicker from './AddressPicker.jsx'
+import ReceiptType from './ReceiptType.jsx'
+import TaiwanPostalCode from './TaiwanPostalCode.json'
 
 class App extends React.Component {
     constructor(props) {
