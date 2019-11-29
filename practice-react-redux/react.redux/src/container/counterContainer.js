@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Counter from '../components/counterPresentational';
-import { add, sub } from '../actions/action';
+import { add, sub, double } from '../actions/action';
 
 // 傳遞 state 至 props 的 function, 通常命名為 mapStateToProps
 const mapStateToProps = (state) => {
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
       addEvent: () => {dispatch(add())},
       subEvent: () => {dispatch(sub())},
+      doubleEvent: () => {dispatch(double())}
       // 同樣的，key 值就是接收的 props 的名稱
     }
   }
