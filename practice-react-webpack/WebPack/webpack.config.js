@@ -1,10 +1,14 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.jsx',
+  // 若在這設定 whatwg-fetch，則不需要在 main.jsx 中 import whatwg.fetch
+  entry: {
+    main: ['whatwg-fetch', './src/main.jsx']
+  },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'main.js'
+    // 這裡的 [name] 對應到 entry 的 key
+    filename: '[name].js'
   },
   mode: "development", // 或者 production
   module: {
@@ -19,7 +23,21 @@ module.exports = {
               // 則必須放在 use 裡面
               loader: "babel-loader",
               options: {
-                presets: ['@babel/preset-env']
+                // 注意專為 react 用的 preset
+
+                // 若有要針對某個 preset 做設定，則該 preset 須再用一陣列包裝
+                // 注意 main.jsx 內需要同時 import "core-js/stable" 和 "regenerator-runtime/runtime" 來使用 useBuiltIns: entry 和 corejs 
+                // 若 useBuiltIns 為 usage 則不需要 import 以上兩項
+
+                // 而 regenerator-runtime/runtime 需要安裝 @babel/@runtime 和/或 @babel/plugin-transform-runtime 來使用
+                presets: [['@babel/preset-env', {useBuiltIns: "entry", corejs: 3}],
+                 '@babel/preset-react'],
+                // 此 plugin 目的在於編譯 class 內的 arrow function
+                plugins: ['@babel/plugin-proposal-class-properties',
+                // @babel/plugin-transform-runtime 為非必要，原因是 regenerator-runtime/runtime 只需要安裝 @babel/@runtime
+                // 就可以運作，不需要在 config 檔中另外設定
+                // 但使用 @babel/plugin-transform-runtime 可以減少 babel 中因為互相引用而重複編譯的情形，從而減少檔案大小
+                '@babel/plugin-transform-runtime']
               }
             }
           },
