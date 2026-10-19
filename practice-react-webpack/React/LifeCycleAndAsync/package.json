@@ -1,0 +1,49 @@
+{
+  "name": "life-cycle-async",
+  "version": "1.0.0",
+  "description": "progress bar practice project.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SiegeSailor/ReactES6WebPack"
+  },
+  "main": "",
+  "scripts": {
+    "webpack-build": "webpack --mode=development",
+    "webpack-watch": "webpack -w --mode=development",
+    "lint": "eslint *.jsx",
+    "lint-fix": "eslint --fix *.jsx"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "pre-commit": "^1.2.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "@material/react-drawer": "^0.15.0",
+    "@material/react-material-icon": "^0.15.0",
+    "@material/react-top-app-bar": "^0.15.0",
+    "core-js": "^3.4.7",
+    "react-router-dom": "^5.1.2",
+    "whatwg-fetch": "^3.0.0"
+  }
+}
